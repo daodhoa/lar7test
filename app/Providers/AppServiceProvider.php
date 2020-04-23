@@ -13,7 +13,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $dataAdmin = [
+            'AuthService'
+        ];
+
+        foreach ($dataAdmin as $name) {
+            $this->app->bind('App\Services\Admin\\'.$name.'Interface', 'App\Services\Admin\\'.$name);
+        }
     }
 
     /**

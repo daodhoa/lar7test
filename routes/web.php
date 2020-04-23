@@ -25,5 +25,6 @@ Route::group([
         'namespace' => 'Auth'
     ], function () {
         Route::get('login', 'LoginController@showLoginForm')->name('admin.login');
+        Route::post('login', 'LoginController@main')->name('admin.postLogin');
     });
 });
