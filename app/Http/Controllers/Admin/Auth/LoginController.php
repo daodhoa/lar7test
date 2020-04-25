@@ -24,7 +24,7 @@ class LoginController extends Controller
     {
         $credentials = $request->only(['email', 'password']);
         if ($this->authService->login($credentials)) {
-            return 'Home Page';
+            return redirect()->route('admin.dashboard');
         } else {
             return back()->withInput()->with('error', 'Credentials don\'t match');
         }

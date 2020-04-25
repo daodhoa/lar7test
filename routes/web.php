@@ -13,18 +13,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('admin.profile.index');
-});
-
 Route::group([
     'namespace' => 'Admin',
     'prefix' => 'admin',
 ], function () {
     Route::group([
-        'namespace' => 'Auth'
+        'namespace' => 'Auth',
+        'middleware' => 'guest'
     ], function () {
         Route::get('login', 'LoginController@showLoginForm')->name('admin.login');
         Route::post('login', 'LoginController@main')->name('admin.postLogin');
+    });
+
+    Route::group([
+        'middleware' => 'admin'
+    ], function () {
+        Route::get('logout', 'Auth\LogoutController@main')->name('admin.logout');
+        Route::get('dashboard', 'DashboardController@main')->name('admin.dashboard');
     });
 });
