@@ -5,6 +5,8 @@ namespace App\Providers;
 use App\View\Components\NavBarAdmin;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Database\Schema\Builder;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,6 +15,7 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
+   
     public function register()
     {
         $dataAdmin = [
@@ -31,6 +34,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Builder::defaultStringLength(191);
         Blade::component('nav-bar-admin', NavBarAdmin::class);
     }
 }
