@@ -15,7 +15,7 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-   
+
     public function register()
     {
         $dataAdmin = [
@@ -25,6 +25,15 @@ class AppServiceProvider extends ServiceProvider
         foreach ($dataAdmin as $name) {
             $this->app->bind('App\Services\Admin\\'.$name.'Interface', 'App\Services\Admin\\'.$name);
         }
+
+        $data = [
+            'UserService'
+        ];
+
+        foreach ($data as $name) {
+            $this->app->bind('App\Services\\'.$name.'Interface', 'App\Services\\'.$name);
+        }
+
     }
 
     /**
