@@ -79,6 +79,8 @@ class UserService implements UserServiceInterface
             'email' => $signUpInfo['email'],
             'password' => Hash::make($signUpInfo['password']),
             'is_verified' => 0,
+            'lang' => $signUpInfo['lang'],
+            'username' => $signUpInfo['email']
         ]);
         $this->sendVerificationCode($user);
         return [

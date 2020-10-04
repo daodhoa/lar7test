@@ -20,7 +20,8 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->unsignedTinyInteger('is_verified')->default(0);
             $table->string('avatar')->nullable();
-            $table->unsignedTinyInteger('role')->default(0);
+            $table->string('username');
+            $table->string('lang')->default('en');
             $table->rememberToken();
             $table->timestamps();
         });

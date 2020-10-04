@@ -27,4 +27,11 @@ Route::group([
         Route::post('/sign-out', 'AuthController@signOut')->middleware('auth.jwt');
         Route::get('/me', 'AuthController@getMe')->middleware('auth.jwt');
     });
+
+    Route::group([
+        'prefix' => 'posts',
+        'middleware' => 'auth.jwt'
+    ], function () {
+
+    });
 });

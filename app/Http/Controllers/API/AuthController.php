@@ -33,7 +33,7 @@ class AuthController extends Controller
 
     public function signUp(Request $request) {
         $this->validateSignUpRequest($request);
-        $signUpInfo = $request->only(['email', 'password', 'name']);
+        $signUpInfo = $request->only(['email', 'password', 'name', 'lang']);
         $responseData = $this->userService->signUp($signUpInfo);
         return response()->json($responseData['data'], $responseData['status'] ? 200 : 401);
     }
@@ -44,6 +44,7 @@ class AuthController extends Controller
             'email' => 'required|string|email',
             'name' => 'required|string|min:2',
             'password' => 'required|string|min:6|confirmed',
+            'lang' => 'required|in:en,vn'
         ]);
     }
 

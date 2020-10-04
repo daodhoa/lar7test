@@ -58,6 +58,20 @@ services:
     networks:
       - app-network
 
+  minio:
+    image: minio/minio
+    environment:
+      - MINIO_ACCESS_KEY=MINIOLARAVEL
+      - MINIO_SECRET_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+      - MINIO_REGION=us-west-2
+    ports:
+    - "9002:9000"
+    volumes:
+    - .data/minio:/data
+    command: server /data
+    networks:
+      - app-network
+
 networks:
   app-network:
     driver: bridge
