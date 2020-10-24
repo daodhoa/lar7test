@@ -27,7 +27,8 @@ class AppServiceProvider extends ServiceProvider
         }
 
         $data = [
-            'UserService'
+            'UserService',
+            'CategoryService'
         ];
 
         foreach ($data as $name) {
